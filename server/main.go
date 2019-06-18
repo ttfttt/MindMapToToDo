@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -9,17 +8,17 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func sampleHandler1(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello sample")
-}
-
 func main() {
-	// ルーティング設定
 	r := mux.NewRouter()
+
+	// ファイルサーバーのpathを設定
 	buildHandler := http.FileServer(http.Dir("client/build"))
-	r.PathPrefix("/").Handler(buildHandler)
+	r.Handle("/", buildHandler)
 	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("client/build/static")))
 	r.PathPrefix("/static/").Handler(staticHandler)
+
+	// エンドポイントの設定
+	r.HandleFunc("/api/{user}/todo", todoHandler)
 
 	// サーバ設定
 	srv := &http.Server{

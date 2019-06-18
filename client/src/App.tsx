@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,9 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+        <button onClick={() => axios.get('/api/teshima/todo').then(res => {
+          console.log(res.data);
+        })}>{"押してみよう"}</button>
       </header>
     </div>
   );

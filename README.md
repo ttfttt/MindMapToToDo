@@ -7,7 +7,8 @@
 
  # 準備
 
-## gorillaを使用するため、go getしておく
+## gorillaを使用するため、go getしておく  
+参考：https://github.com/gorilla/mux
  ```
 $ go get -u github.com/gorilla/mux
 $ go get -u github.com/gorilla/context
