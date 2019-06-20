@@ -11,12 +11,6 @@ import (
 func main() {
 	r := mux.NewRouter()
 
-	// ファイルサーバーのpathを設定
-	buildHandler := http.FileServer(http.Dir("client/build"))
-	r.Handle("/", buildHandler)
-	staticHandler := http.StripPrefix("/static/", http.FileServer(http.Dir("client/build/static")))
-	r.PathPrefix("/static/").Handler(staticHandler)
-
 	// エンドポイントの設定
 	r.HandleFunc("/api/{user}/todo", todoHandler)
 
