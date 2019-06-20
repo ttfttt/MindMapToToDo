@@ -1,10 +1,14 @@
 import { connect } from 'react-redux'
+import { Dispatch, Action } from 'redux'
 import { ReduxState } from '../store'
-import { Home } from '../modules/Home';
-import { Dispatch } from 'react';
-import { Action } from 'redux';
-import { todoActions, TodoInfo } from 'modules/Todo';
+import { Todo, todoActions, TodoInfo } from '../modules/Todo';
 import { todoListActions } from 'modules/TodoList';
+
+export interface TodoActions {
+    inputTitle: (name: string) => Action<string>;
+    inputDetail: (name: string) => Action<string>;
+    submit: (todo: TodoInfo) => Action<string>;
+}
 
 function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
     return {
@@ -21,10 +25,10 @@ function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
 }
 
 function mapStateToProps(state: ReduxState) {
-    return Object.assign({}, { todoState: state.todoState, todoListState: state.todoListState });
+    return Object.assign({}, { todoState: state.todoState });
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Home)
+)(Todo)
