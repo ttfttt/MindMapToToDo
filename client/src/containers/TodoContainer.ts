@@ -8,14 +8,14 @@ import { RouteComponentProps } from 'react-router';
 export function getTodo(id: string): Promise<TodoInfo> {
     return axios.request<TodoInfo>({
         method: "get",
-        url: `http://localhost:8000/api/todo/${id}`
+        url: `http://localhost:8080/api/todo/${id}`
     }).then(res => res.data);
 };
 
 export function addTodo(todo: TodoInfo): Promise<TodoInfo> {
     return axios.request<TodoInfo>({
         method: "post",
-        url: "http://localhost:8000/api/todo",
+        url: "http://localhost:8080/api/todo",
         data: todo
     })
         .then(res => res.data)
@@ -24,7 +24,7 @@ export function addTodo(todo: TodoInfo): Promise<TodoInfo> {
 export function updateTodo(todo: TodoInfo): Promise<TodoInfo> {
     return axios.request<TodoInfo>({
         method: "put",
-        url: `http://localhost:8000/api/todo/${todo.id}`,
+        url: `http://localhost:8080/api/todo/${todo.id}`,
         data: todo
     }).then(res => res.data);
 };
@@ -32,7 +32,7 @@ export function updateTodo(todo: TodoInfo): Promise<TodoInfo> {
 export function deleteTodo(todo: TodoInfo): Promise<TodoInfo> {
     return axios.request<TodoInfo>({
         method: "delete",
-        url: `http://localhost:8000/api/todo/${todo.id}`,
+        url: `http://localhost:8080/api/todo/${todo.id}`,
         data: todo
     }).then(res => res.data);
 };

@@ -14,7 +14,7 @@ export interface TodoListActions {
 export function getList(): Promise<TodoInfo[]> {
     return axios.request<TodoInfo[]>({
         method: "get",
-        url: "http://localhost:8000/api/todolist"
+        url: "http://localhost:8080/api/todolist"
     })
         .then(res => res.data.sort((t1, t2) => (t1.priority || 0) - (t2.priority || 0)));
 };

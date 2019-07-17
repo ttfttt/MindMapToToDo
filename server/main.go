@@ -28,8 +28,8 @@ func main() {
 	r.HandleFunc("/api/todolist", todoListHandler)
 	r.HandleFunc("/api/todo", todoHandler)
 	r.HandleFunc("/api/todo/{id}", todoHandler)
-	r.HandleFunc("/api/ping", pingHandler)
+	r.HandleFunc("/", pingHandler)
 
 	// 起動
-	log.Fatal(http.ListenAndServe(":8000", handlers.CORS(allowedOrigins, allowedHeaders, allowedMethods)(r)))
+	log.Fatal(http.ListenAndServe(":8080", handlers.CORS(allowedOrigins, allowedHeaders, allowedMethods)(r)))
 }
