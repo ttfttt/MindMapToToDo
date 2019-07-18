@@ -18,7 +18,7 @@ export function mapDispatchToProps(dispatch: Dispatch<Action<string>>) {
         pong: () => {
             axios.request<{ [key: string]: string; }>({
                 method: "get",
-                url: "http://localhost:8080/api/ping"
+                url: process.env.REACT_APP_REST_API_HOST
             }).then(res => {
                 dispatch(homeActions.getPong.done({ params: "true", result: res.data["message"] }))
             }).catch(_err => {
