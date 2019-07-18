@@ -20,7 +20,7 @@ func main() {
 
 	envLoad()
 	r := mux.NewRouter()
-	allowedOrigins := handlers.AllowedOrigins([]string{"http://localhost:3000"})
+	allowedOrigins := handlers.AllowedOrigins([]string{"http://localhost:3000", "http://remind.japaneast.cloudapp.azure.com:3000"})
 	allowedHeaders := handlers.AllowedHeaders([]string{"Content-Type"})
 	allowedMethods := handlers.AllowedMethods([]string{"GET", "POST", "DELETE", "PUT", "OPTIONS"})
 
